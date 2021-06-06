@@ -1,0 +1,33 @@
+<%- include('../shared/head.ejs') %>
+  <link rel="stylesheet" href="/css/product.css">
+  <link rel="stylesheet" href="/css/form.css">
+</head>
+<body>
+    <%- include('../shared/navigation.ejs') %>
+    <main>
+      <form class="product-form" action="<%= editing ? '/admin/edit-product' : '/admin/add-product' %>" method="POST">
+        <input type="hidden" name="productId" value="<%= editing ? product.id : '' %>">
+        <div class="form-control">
+          <label for="title">Title</label>
+          <input type="text" name="title" id="title" value="<%= editing ? product.title : '' %>">
+        </div>
+
+        <div class="form-control">
+          <label for="imageUrl">Image Url</label>
+          <input type="text" name="imageUrl" id="imageUrl" value="<%= editing ? product.imageUrl : '' %>">
+        </div>
+
+        <div class="form-control">
+          <label for="price">Price</label>
+          <input type="number" name="price" id="price" value="<%= editing ? product.price : '' %>">
+        </div>
+
+        <div class="form-control">
+          <label for="description">Description</label>
+          <textarea name="description" id="description" rows="5"><%= editing ? product.description : '' %></textarea>
+        </div>
+        
+        <button type="submit"><%= editing ? 'Update product' : 'Add product' %></button>
+      </form>
+    </main>
+<%- include('../shared/end.ejs') %>

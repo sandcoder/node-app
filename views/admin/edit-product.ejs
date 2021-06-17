@@ -5,6 +5,7 @@
 <body>
     <%- include('../shared/navigation.ejs') %>
     <main>
+      <% console.log(editing ? product.id : '') %>
       <form class="product-form" action="<%= editing ? '/admin/edit-product' : '/admin/add-product' %>" method="POST">
         <input type="hidden" name="productId" value="<%= editing ? product.id : '' %>">
         <div class="form-control">
